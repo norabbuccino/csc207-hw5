@@ -1,0 +1,23 @@
+Part A: Recurrence Relations
+*Note: log2(n) means log base 2 of n
+
+f0(1) = 1
+f0(n) = 2n-1
+
+f1(1) = 1
+f1(n) = (n(n+1))/2
+
+f2(1) = 1
+f2(n) = (n-1)c + 1
+
+f3(1) = 1
+f3(n) = log2(n) * c + 1
+
+f4(1) = 1
+f4(n) = ?????
+
+f5(1) = 1
+f5(n) = (n-1)*c + n
+
+f6(1) = 1
+f6(n) = ?????

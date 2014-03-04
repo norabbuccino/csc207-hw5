@@ -1,4 +1,4 @@
-
+//FINISH WRITING AND TEST THIS STUFF!
 public class DutchNationalFlag
 {
   /**
@@ -15,6 +15,36 @@ public class DutchNationalFlag
    */
   public void dnf(String[] vals, StringClassifier classifier)
   {
-    // STUB
+    int r = 0;
+    int i = 0;
+    int b = vals.length;
+    int length = vals.length;
+    
+    while(i<b)
+      {
+        String selection = vals[i];
+        if(classifier.classify(vals[i])<0)
+          {
+            for(int x=i; x>r; x--)
+              {
+                vals[x] = vals[x-1];
+              }
+            vals[r] = selection;
+            r = r + 1;
+          }
+        else if(classifier.classify(vals[i])>0)
+          {
+            for(int x = i; x<length-1; x++)
+              {
+                vals[x] = vals[x+1];
+              }
+            vals[length-1] = selection;
+            b = b - 1;
+            i = i - 1;
+          }
+        i = i + 1;
+      }
+    
+    
   } // dnf(String[], StringClassifier) 
 }
