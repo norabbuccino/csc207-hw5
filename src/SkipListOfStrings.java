@@ -4,33 +4,91 @@
 public class SkipListOfStrings
   implements SetOfStrings
 {
-
-  @Override
+  int size;
+  SkipListObj head;
+  SkipListObj tail;
+  SkipListObj current;
+  
+  public SkipListOfStrings()
+  {
+    this.head = new SkipListObj(10,"");
+    this.tail = new SkipListObj(10,"");
+    this.current = this.head;
+    
+    for(int i = 0; i < this.head.level; i++)
+      {
+        this.head.nexts[i] = this.tail;
+      }
+  }
+  
+  public int findIndex(String str)
+  {
+    this.current = this.head;
+    int compareVal = 0;
+    for(int i = 9; i>=0; i--)
+      {
+        if(this.current.nexts[i].value != null)
+          {
+            compareVal = str.compareTo(this.current.nexts[i].value);
+          }
+        
+        if(compareVal == 0)
+          {
+            return i;
+          }
+        else if(compareVal < 0)
+          {
+            current = current.nexts[i];
+            i++;
+          }
+      }
+    return -1;
+  }
+  
   public boolean contains(String str)
   {
-    // TODO Auto-generated method stub
-    return false;
+    if(this.findIndex(str) != -1)
+      {
+        return true;
+      }
+    else
+      return false;
   }
-
-  @Override
+  
   public void add(String str)
   {
-    // TODO Auto-generated method stub
+    this.current = this.head;
+    
+    SkipListObj obj = new SkipListObj(str);
+    for(int i = obj.level -1; i>=0; i--)
+      {
+        int compareVal = str.compareTo(this.current.nexts[i].value);
+        
+        if(compareVal < 0)
+          {
+            this.current = this.current.nexts[i];
+            i++;
+          }
+        else
+          {
+            obj.nexts[i] = this.current.nexts[i];
+            this.current.nexts[i] = obj;
+          }
+      }
+  }
+  
+  public void remove(String str) throws Exception
+  {
+    int index = this.findIndex(str);
+    if(index == -1)
+      {
+        throw new Exception("String not found");
+      }
+    else
+      {
+        this.current = 
+      }
     
   }
-
-  @Override
-  public void remove(String str)
-  {
-    // TODO Auto-generated method stub
-    
-  }
-
-  @Override
-  public boolean findPlace(String str)
-  {
-    // TODO Auto-generated method stub
-    return false;
-  }
- 
+  
 } // class SkipListOfStrings

@@ -6,10 +6,6 @@ public interface SetOfStrings
   /**
    * Find the location for the string
    */
-  public boolean findPlace(String str);
-  /**
-   * Determine if the set contains a particular string.
-   */
   public boolean contains(String str);
 
   /**
