@@ -14,9 +14,28 @@ public class BinarySearch
    *      for all reasonable i.
    * @post values[index] == val
    */
-  public static int binarySearch(int i, int[] vals)
+  public static int binarySearch(int val, int[] vals)
     throws Exception
   {
-    return 0; // STUB
+    int lower = 0;
+    int upper = vals.length;
+    
+    while(lower <= upper)
+      {
+        int midpoint = lower + ((upper - lower) / 2);
+        if(vals[midpoint] == val)
+          {
+            return midpoint;
+          }
+        else if(vals[midpoint]<val)
+          {
+            lower = midpoint + 1;
+          }
+        else
+          {
+            upper = midpoint - 1;
+          }
+      }
+    throw new Exception(val + " was not found in the array");
   } // binarySearch
 }
