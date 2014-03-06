@@ -45,6 +45,29 @@ public class SkipListOfStrings
     return -1;
   }
   
+  public SkipListObj findObj(String str)
+  {
+    this.current = this.head;
+    int compareVal = 0;
+    for(int i = 9; i>=0; i--)
+      {
+        if(this.current.nexts[i].value != null)
+          {
+            compareVal = str.compareTo(this.current.nexts[i].value);
+          }
+        if(compareVal == 0)
+          {
+            return this.current.nexts[i];
+          }
+        else if(compareVal < 0)
+          {
+            current = current.nexts[i];
+            i++;
+          }
+      }
+    return new SkipListObj(-1, "-1");
+  }
+  
   public boolean contains(String str)
   {
     if(this.findIndex(str) != -1)
@@ -86,7 +109,9 @@ public class SkipListOfStrings
       }
     else
       {
-        this.current = 
+        this.current = this.findObj(str);
+        this.current.nexts[index] = this.current.nexts[index].nexts[index];
+        
       }
     
   }

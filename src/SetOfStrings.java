@@ -17,8 +17,9 @@ public interface SetOfStrings
 
   /**
    * Remove an element from the set.
+   * @throws Exception 
    * 
    * @post !contains(str)
    */
-  public void remove(String str);
+  public void remove(String str) throws Exception;
 } // interface SetOfStrings
